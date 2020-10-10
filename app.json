@@ -20,6 +20,7 @@
       "supportsTablet": true
     },
     "web": {
+      "name": "할머니 위해",
       "favicon": "./assets/favicon.png"
     }
   }
