@@ -1,12 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
-const Banner = ({title}) => (
+const Banner = ({ title }) => (
   <Text style={styles.text}>{title}</Text>
 );
 
 const linksies = {
-  title: "안녕하세요, 할머니! 서정입니다",
+  title: "안녕하세요, 할머니! 서정입니다. 좋은 하루 보내세요!",
   youtubeLinks: [
     {
       "id": "Rain Sounds",
@@ -24,29 +24,31 @@ const linksies = {
 //app passes list of links to LinksList
 //LinksList makes a widget for each link
 const LinksList = ({ links }) => (
-  <View style={styles.linksList}>
-    { links.map(link => <Link link={link} />) }
-  </View>
+  <ScrollView>
+    <View style={styles.linksList}>
+      {links.map(link => <Link link={link} />)}
+    </View>
+  </ScrollView>
 )
 
 const getLinkTitle = link => (
   link.id
 );
 
-const Link = ({link}) => (
+const Link = ({ link }) => (
   <TouchableOpacity style={styles.linkButton}>
     <Text style={styles.linkText}>
-    {`hai ${getLinkTitle(link)}`}
+      {`재목: ${getLinkTitle(link)}`}
     </Text>
   </TouchableOpacity>
 );
 
 const App = () => {
   return (
-    <View style={styles.container}>
-      <Banner title={linksies.title}/>
-      <LinksList links={linksies.youtubeLinks}/>
-    </View>
+    <SafeAreaView style={styles.container}>
+      <Banner title={linksies.title} />
+      <LinksList links={linksies.youtubeLinks} />
+    </SafeAreaView>
   );
 }
 
@@ -54,8 +56,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    padding: 15,
+    margin: 10
   },
   text: {
     color: '#000',
