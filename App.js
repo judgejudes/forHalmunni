@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>안녕하세요, 할머니! 서정입니다</Text>
+      <Text style={styles.text}>안녕하세요, 할머니! 서정입니다 ummmm</Text>
     </View>
   );
 }
