@@ -2,20 +2,25 @@ import React from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const Banner = ({ title }) => (
-  <Text style={styles.text}>{title}</Text>
+  <Text style={styles.msgtext}>{title}</Text>
 );
 
 const linksies = {
   title: "안녕하세요, 할머니! 서정입니다. 좋은 하루 보내세요!",
   youtubeLinks: [
     {
-      "id": "Rain Sounds",
-      "title": "ult rain sounds yeye",
+      "id": "bi sohree",
+      "title": "rain sounds",
       // "link"
     },
     {
-      "id": "Rain Sounds",
-      "title": "ult rain sounds yeye",
+      "id": "the fun things",
+      "title": "river sounds",
+      // "link"
+    },
+    {
+      "id": "the fun things",
+      "title": "river sounds",
       // "link"
     }
   ]
@@ -38,7 +43,7 @@ const getLinkTitle = link => (
 const Link = ({ link }) => (
   <TouchableOpacity style={styles.linkButton}>
     <Text style={styles.linkText}>
-      {`재목: ${getLinkTitle(link)}`}
+      {`${getLinkTitle(link)}`}
     </Text>
   </TouchableOpacity>
 );
@@ -56,15 +61,38 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    // alignItems: 'center',
-    // justifyContent: 'center',
-    padding: 15,
-    margin: 10
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 30,
+    margin: 40,
+  },
+  msgtext: {
+    color: '#000',
+    fontSize: 20,
   },
   text: {
     color: '#000',
     fontSize: 16,
-  }
+  },
+  linksList: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+  },
+  linkButton: {
+    borderRadius: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10,
+    height: 60,
+    padding: 10,
+    minWidth: 90,
+    maxWidth: 90,
+    backgroundColor: '#66b0ff', 
+  },
+
 });
 
 export default App;
