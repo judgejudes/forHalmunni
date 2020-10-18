@@ -1,5 +1,5 @@
-import React from 'react';
-import { SafeAreaView, ScrollView, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import React, { useCallback } from 'react';
+import { SafeAreaView, ScrollView, StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native';
 
 const Banner = ({ title }) => (
   <Text style={styles.msgtext}>{title}</Text>
@@ -7,22 +7,42 @@ const Banner = ({ title }) => (
 
 const linksies = {
   title: "안녕하세요, 할머니! 서정입니다. 좋은 하루 보내세요!",
-  youtubeLinks: [
+  youtubeLinks: [ //replace dummy data later
     {
       "id": "bi sohree",
       "title": "rain sounds",
-      // "link"
+      "url": "https://www.youtube.com/watch?v=jX6kn9_U8qk"
     },
     {
       "id": "the fun things",
       "title": "river sounds",
-      // "link"
+      "url": "https://www.youtube.com/watch?v=jX6kn9_U8qk"
     },
     {
       "id": "the fun things",
       "title": "river sounds",
-      // "link"
-    }
+      "url": "https://www.youtube.com/watch?v=jX6kn9_U8qk"
+    },
+    {
+      "id": "the fun things",
+      "title": "river sounds",
+      "url": "https://www.youtube.com/watch?v=jX6kn9_U8qk"
+    },
+    {
+      "id": "the fun things",
+      "title": "river sounds",
+      "url": "https://www.youtube.com/watch?v=jX6kn9_U8qk"
+    },
+    {
+      "id": "the fun things",
+      "title": "river sounds",
+      "url": "https://www.youtube.com/watch?v=jX6kn9_U8qk"
+    },
+    {
+      "id": "the fun things",
+      "title": "river sounds",
+      "url": "https://www.youtube.com/watch?v=jX6kn9_U8qk"
+    },
   ]
 };
 
@@ -40,13 +60,26 @@ const getLinkTitle = link => (
   link.id
 );
 
+
+const goToUrl = url => (
+  Linking.openURL(url)
+);
+
+// a button holding a link (which is all linksies.youtubeLinks)
 const Link = ({ link }) => (
-  <TouchableOpacity style={styles.linkButton}>
+
+  <TouchableOpacity
+  style={styles.linkButton}
+  onPress={() => goToUrl(link.url)}>
+  >
+    {/* not sure if want to open new tab or not? maybe it's more confusing */}
     <Text style={styles.linkText}>
       {`${getLinkTitle(link)}`}
     </Text>
   </TouchableOpacity>
 );
+
+
 
 const App = () => {
   return (
