@@ -7,13 +7,13 @@ const Banner = ({ title }) => (
 );
 
 const IntroMsg = ({ title, msgs }) => (
-  <Card style={styles.intromsg}>
-    <Card.Title>{title}</Card.Title>
+  <Card style={{backgroundColor: "#b7b7a4"}}>
+    <Card.Title style={styles.msgtext}>{title}</Card.Title>
     <Card.Divider />
-    <Card.Image source={{ uri: 'https://picsum.photos/700' }} />
+    <Card.Image style={styles.introPic}source={{ uri: require('./img/flowers.jpg') }} />
     {/* populate 3 buttons */}
     <View style={styles.introMsgsList}>
-    {msgs.map(msg => <IntroMsgButton info={msg} />)}
+      {msgs.map(msg => <IntroMsgButton info={msg} />)}
     </View>
 
   </Card>
@@ -28,49 +28,107 @@ const IntroMsgButtonTextList = {
     {
       "msg": "어떡해 써?"
     },
-    {
-      "msg": "hi"
-    },
   ]
 };
 
 const IntroMsgButton = ({ info }) => (
   <Button
+  size = "small"
     icon={<Icon name='help' color='#ffffff' />}
     buttonStyle={{
       padding: 5,
-      width: 120,
-      margin: 8
+      // width: 120,
+      // light brown color
+      backgroundColor: "#cb997e",
+      margin: 8,
     }}
-    title = {info.msg} />
+    title={info.msg} 
+    titleStyle={{
+      fontSize: 35
+    }}
+    />
 );
 
-const linksies = {
+const MsgToHalmunni = {
   title: "안녕하세요, 할머니! 서정입니다. 좋은 하루 보내세요!",
-  youtubeLinks: [
-    {
-      "id": "비 소리",
-      "title": "rain sounds",
-      "url": "https://www.youtube.com/watch?v=jX6kn9_U8qk"
-    },
-    {
-      "id": "재밌는 음악",
-      "title": "river sounds",
-      "url": "https://www.youtube.com/watch?v=tKne10WKy34"
-    },
-    {
-      "id": "이거는 뭘까 흠흠",
-      "title": "river sounds",
-      "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
-    },
-  ]
-};
+}
 
+const linksies = [
+  {
+    title: "music",
+    links: [
+      {
+        "id": "빗소리",
+        "title": "rain sounds",
+        "url": "https://www.youtube.com/watch?v=Egwxr9Hvls4"
+      },
+      {
+        "id": "재밌는 음악",
+        "title": "river sounds",
+        "url": "https://www.youtube.com/watch?v=tKne10WKy34"
+      },
+      {
+        "id": "이거는 뭘까 흠흠",
+        "title": "river sounds",
+        "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
+      },
+    ]
+  },
+  {
+    title: "sounds",
+    links: [
+      {
+        "id": "빗소리",
+        "title": "rain sounds",
+        "url": "https://www.youtube.com/watch?v=Egwxr9Hvls4"
+      },
+      {
+        "id": "재밌는 음악",
+        "title": "river sounds",
+        "url": "https://www.youtube.com/watch?v=tKne10WKy34"
+      },
+      {
+        "id": "이거는 뭘까 흠흠",
+        "title": "river sounds",
+        "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
+      },
+      {
+        "id": "이거는 뭘까 흠흠",
+        "title": "river sounds",
+        "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
+      },
+      {
+        "id": "이거는 뭘까 흠흠",
+        "title": "river sounds",
+        "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
+      },
+      {
+        "id": "이거는 뭘까 흠흠",
+        "title": "river sounds",
+        "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
+      },
+      
+    ]
+  }
+];
+
+const GroupOfLinks = ({ groups }) => (
+  // ex. (groups: music, sounds, etc.)
+  <View style={styles.group}>
+    {groups.map(group => <LinksList links={group.links} title={group.title} />)}
+  </View>
+);
+
+//GroupOfLinks passes a group, like "sounds" or "music" to LinksList 
 //app passes list of links to LinksList
 //LinksList makes a widget for each link
-const LinksList = ({ links }) => (
+// LinksList passes each link to Link (where the button is made)
+const LinksList = ({ links, title }) => (
   <ScrollView>
+    {/* music, sounds, etc. */}
     <View style={styles.linksList}>
+    <Text style={styles.msgText2}>{title}</Text> 
+    {/* i want flex to start from JUST the links, not the title */}
       {links.map(link => <Link key={link.url} link={link} />)}
     </View>
   </ScrollView>
@@ -96,9 +154,9 @@ const Link = ({ link }) => (
 const App = () => {
   return (
     <SafeAreaView style={styles.container}>
-      {/* <Banner title={linksies.title} /> */}
-      <IntroMsg style={styles.intromsg} title={linksies.title} msgs={IntroMsgButtonTextList.thingies} />
-      <LinksList links={linksies.youtubeLinks} />
+      <IntroMsg style={styles.intromsg} title={MsgToHalmunni.title} msgs={IntroMsgButtonTextList.thingies} />
+      <GroupOfLinks groups={linksies} />
+
     </SafeAreaView>
   );
 }
@@ -115,21 +173,30 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 30,
+    // alignItems: 'center',
+    // justifyContent: 'center',
+    padding: 0,
     margin: 40,
+    backgroundColor: '#f0efeb'
   },
   msgtext: {
     color: '#000',
-    fontSize: 20,
+    fontSize: 35,
   },
   text: {
     color: '#000',
-    fontSize: 16,
+    fontSize: 35,
   },
   linksList: {
-    ...flexList
+    ...flexList,
+    backgroundColor: '#a5a58d',
+    margin: 30,
+    // width: 40
+    justifyContent: 'center',
+    // flex: 3
+  },
+  msgText2: {
+    // backgroundColor: '#cb997e',
   },
   linkButton: {
     borderRadius: 5,
@@ -141,11 +208,34 @@ const styles = StyleSheet.create({
     padding: 10,
     minWidth: 90,
     maxWidth: 90,
-    backgroundColor: '#66b0ff',
+    backgroundColor: '#eddcd2',
   },
   introMsgsList: {
     ...flexList,
-    margin: 20
+    marginTop: 20,
+    justifyContent: "center",
+    fontSize: 35
+    // fontSize is not working
+
+  },
+  intromsg: {
+    backgroundColor: '#b7b7a4'
+  },
+  // intromsg: {
+  //   // this isn't working...how can i make a card better? or maybe...don't use a card?
+  //   width: 5000,
+  //   height: 5000
+  // },
+  group: {
+    ...flexList,
+    // padding: 10,
+    margin: 10
+    // backgroundColor: 'yellow'
+  },
+  introPic: {
+    height: 500,
+    // width: 500,
+    textAlign: 'center'
   }
 
 });
