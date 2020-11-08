@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native';
 import { Card, Button, Icon } from 'react-native-elements';
+import { linksies } from './linksies';
 
 const Banner = ({ title }) => (
   <Text style={styles.msgtext}>{title}</Text>
@@ -57,64 +58,6 @@ const MsgToHalmunni = {
   title: "안녕하세요, 할머니! 서정입니다. 좋은 하루 보내세요!",
 }
 
-const linksies = [
-  {
-    title: "음악",
-    links: [
-      {
-        "id": "빗소리",
-        "title": "rain sounds",
-        "url": "https://www.youtube.com/watch?v=Egwxr9Hvls4"
-      },
-      {
-        "id": "재밌는 음악",
-        "title": "river sounds",
-        "url": "https://www.youtube.com/watch?v=tKne10WKy34"
-      },
-      {
-        "id": "이거는 뭘까 흠흠",
-        "title": "river sounds",
-        "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
-      },
-    ]
-  },
-  {
-    title: "sounds",
-    links: [
-      {
-        "id": "빗소리",
-        "title": "rain sounds",
-        "url": "https://www.youtube.com/watch?v=Egwxr9Hvls4"
-      },
-      {
-        "id": "재밌는 음악",
-        "title": "river sounds",
-        "url": "https://www.youtube.com/watch?v=tKne10WKy34"
-      },
-      {
-        "id": "이거는 뭘까 흠흠",
-        "title": "river sounds",
-        "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
-      },
-      {
-        "id": "이거는 뭘까 흠흠",
-        "title": "river sounds",
-        "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
-      },
-      {
-        "id": "이거는 뭘까 흠흠",
-        "title": "river sounds",
-        "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
-      },
-      {
-        "id": "이거는 뭘까 흠흠",
-        "title": "river sounds",
-        "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
-      },
-      
-    ]
-  }
-];
 
 const GroupOfLinks = ({ groups }) => (
   // ex. (groups: music, sounds, etc.)
