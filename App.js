@@ -11,11 +11,10 @@ const IntroMsg = ({ title, msgs }) => (
   <Card style={{
     backgroundColor: "#b7b7a4",
     margin: 300
-    }}>
+  }}>
     <Card.Title style={styles.msgtext}>{title}</Card.Title>
     <Card.Divider />
-    <Card.Image style={styles.introPic}source={{ uri: require('./img/flowers.jpg') }} />
-    {/* populate 3 buttons */}
+    <Card.Image style={styles.introPic} source={{ uri: require('./img/flowers.jpg') }} />
     <View style={styles.introMsgsList}>
       {msgs.map(msg => <IntroMsgButton info={msg} />)}
     </View>
@@ -37,21 +36,19 @@ const IntroMsgButtonTextList = {
 
 const IntroMsgButton = ({ info }) => (
   <Button
-  size = "small"
     icon={<Icon name='help' color='#ffffff' />}
     buttonStyle={{
       padding: 5,
-      // width: 120,
       // light brown color
       backgroundColor: "#cb997e",
       padding: 5,
       margin: 8,
     }}
-    title={info.msg} 
+    title={info.msg}
     titleStyle={{
       fontSize: 35
     }}
-    />
+  />
 );
 
 const MsgToHalmunni = {
@@ -74,8 +71,8 @@ const LinksList = ({ links, title }) => (
   <ScrollView>
     {/* music, sounds, etc. */}
     <View style={styles.linksList}>
-    <Text style={styles.msgText2}>{title}</Text> 
-    {/* i want flex to start from JUST the links, not the title */}
+      <Text style={styles.msgText2}>{title}</Text>
+      {/* i want flex to start from JUST the links, not the title */}
       {links.map(link => <Link key={link.url} link={link} />)}
     </View>
   </ScrollView>
@@ -86,14 +83,18 @@ const getLinkTitle = link => (
 );
 
 const Link = ({ link }) => (
-// to do: just use Button from React Native Elements
-  <TouchableOpacity
-    style={styles.linkButton}
-    onPress={() => Linking.openURL(link.url)}>
-    <Text style={styles.linkText}>
-      {`${getLinkTitle(link)}`}
-    </Text>
-  </TouchableOpacity>
+  // to do: just use Button from React Native Elements
+  <Button
+    buttonStyle={{
+      backgroundColor: '#eddcd2',
+      margin: 10
+    }}
+    onPress={() => Linking.openURL(link.url)}
+    title={`${getLinkTitle(link)}`}
+    titleStyle={{
+      fontSize: 25
+    }}
+  />
 );
 
 
