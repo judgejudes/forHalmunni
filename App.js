@@ -7,7 +7,10 @@ const Banner = ({ title }) => (
 );
 
 const IntroMsg = ({ title, msgs }) => (
-  <Card style={{backgroundColor: "#b7b7a4"}}>
+  <Card style={{
+    backgroundColor: "#b7b7a4",
+    margin: 300
+    }}>
     <Card.Title style={styles.msgtext}>{title}</Card.Title>
     <Card.Divider />
     <Card.Image style={styles.introPic}source={{ uri: require('./img/flowers.jpg') }} />
@@ -26,7 +29,7 @@ const IntroMsgButtonTextList = {
       "msg": "이게 뭐지?"
     },
     {
-      "msg": "어떡해 써?"
+      "msg": "어떻게 써?"
     },
   ]
 };
@@ -40,6 +43,7 @@ const IntroMsgButton = ({ info }) => (
       // width: 120,
       // light brown color
       backgroundColor: "#cb997e",
+      padding: 5,
       margin: 8,
     }}
     title={info.msg} 
@@ -55,7 +59,7 @@ const MsgToHalmunni = {
 
 const linksies = [
   {
-    title: "music",
+    title: "음악",
     links: [
       {
         "id": "빗소리",
@@ -139,7 +143,7 @@ const getLinkTitle = link => (
 );
 
 const Link = ({ link }) => (
-
+// to do: just use Button from React Native Elements
   <TouchableOpacity
     style={styles.linkButton}
     onPress={() => Linking.openURL(link.url)}>
@@ -175,8 +179,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     // alignItems: 'center',
     // justifyContent: 'center',
-    padding: 0,
-    margin: 40,
+    // padding: 0,
+    // margin: 40,
     backgroundColor: '#f0efeb'
   },
   msgtext: {
