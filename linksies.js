@@ -3,19 +3,16 @@ export const linksies = [
       title: "음악",
       links: [
         {
-          "id": "빗소리",
-          "title": "rain sounds",
-          "url": "https://www.youtube.com/watch?v=Egwxr9Hvls4"
+          "id": "임영웅 노래모음",
+          "url": "https://www.youtube.com/watch?v=fgnAnpM253Y"
         },
         {
-          "id": "재밌는 음악",
-          "title": "river sounds",
-          "url": "https://www.youtube.com/watch?v=tKne10WKy34"
+          "id": "이찬원 노래모음",
+          "url": "https://www.youtube.com/watch?v=znWPOWtP-Hc"
         },
         {
-          "id": "이거는 뭘까 흠흠",
-          "title": "river sounds",
-          "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
+          "id": "악동뮤지션 인기곡 노래모음",
+          "url": "https://www.youtube.com/watch?v=tMyK3tSrEX8"
         },
       ]
     },
@@ -24,33 +21,27 @@ export const linksies = [
       links: [
         {
           "id": "빗소리",
-          "title": "rain sounds",
           "url": "https://www.youtube.com/watch?v=Egwxr9Hvls4"
         },
         {
-          "id": "재밌는 음악",
-          "title": "river sounds",
-          "url": "https://www.youtube.com/watch?v=tKne10WKy34"
+          "id": "켐프 파이어",
+          "url": "https://www.youtube.com/watch?v=EqqpcFj8G-s"
         },
         {
-          "id": "이거는 뭘까 흠흠",
-          "title": "river sounds",
-          "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
+          "id": "흐르는 물",
+          "url": "https://www.youtube.com/watch?v=IvjMgVS6kng"
         },
         {
-          "id": "이거는 뭘까 흠흠",
-          "title": "river sounds",
-          "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
+          "id": "바람 과 내리는 눈",
+          "url": "https://www.youtube.com/watch?v=QbJ0siXX66M"
         },
         {
-          "id": "이거는 뭘까 흠흠",
-          "title": "river sounds",
-          "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
+          "id": "도소관",
+          "url": "https://www.youtube.com/watch?v=757G_El3ABI"
         },
         {
-          "id": "이거는 뭘까 흠흠",
-          "title": "river sounds",
-          "url": "https://www.youtube.com/watch?v=VYsqlPUsFkg"
+          "id": "숩 속에 사는 새들",
+          "url": "https://www.youtube.com/watch?v=cvQLjfLw644"
         },
         
       ]

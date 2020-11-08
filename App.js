@@ -86,7 +86,8 @@ const Link = ({ link }) => (
   // to do: just use Button from React Native Elements
   <Button
     buttonStyle={{
-      backgroundColor: '#eddcd2',
+      backgroundColor: '#a5a58d', 
+      // olive green
       margin: 10
     }}
     onPress={() => Linking.openURL(link.url)}
@@ -137,7 +138,8 @@ const styles = StyleSheet.create({
   },
   linksList: {
     ...flexList,
-    backgroundColor: '#a5a58d',
+    backgroundColor: '#eddcd2', //light peach
+    borderRadius: 5,
     margin: 30,
     // width: 40
     justifyContent: 'center',
