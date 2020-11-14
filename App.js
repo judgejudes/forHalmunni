@@ -1,11 +1,13 @@
-import React, { useCallback } from 'react';
+import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native';
-import { Card, Button, Icon } from 'react-native-elements';
+import { Card, Button, Icon, Overlay } from 'react-native-elements';
+import Modal from 'modal-react-native-web';
 import { linksies } from './linksies';
 
 const Banner = ({ title }) => (
   <Text style={styles.msgtext}>{title}</Text>
 );
+
 
 const IntroMsg = ({ title, msgs }) => (
   <Card style={{
@@ -26,30 +28,53 @@ const IntroMsg = ({ title, msgs }) => (
 const IntroMsgButtonTextList = {
   thingies: [
     {
-      "msg": "이게 뭐지?"
+      "msg": "이게 뭐지?",
+      "description": "This is a website for all of your favorite things on the Internet! Made with love, from Judy"
     },
     {
-      "msg": "어떻게 써?"
+      "msg": "어떻게 써?",
+      "description": "Click on the buttons to watch those videos :)"
     },
   ]
 };
 
-const IntroMsgButton = ({ info }) => (
-  <Button
-    icon={<Icon name='help' color='#ffffff' />}
-    buttonStyle={{
-      padding: 5,
-      // light brown color
-      backgroundColor: "#cb997e",
-      padding: 5,
-      margin: 8,
-    }}
-    title={info.msg}
-    titleStyle={{
-      fontSize: 35
-    }}
-  />
-);
+const IntroMsgButton = ({ info }) => {
+  // const learnMore = (description) => {
+  //   console.log(description);
+  // }
+
+  const [visible, setVisible] = useState(false);
+
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  };
+
+  return (
+    <View>
+    <Button
+      icon={<Icon name='help' color='#ffffff' />}
+      buttonStyle={{
+        padding: 5,
+        // light brown color
+        backgroundColor: "#cb997e",
+        padding: 5,
+        margin: 8,
+      }}
+      title={info.msg}
+      titleStyle={{
+        fontSize: 35
+      }}
+      // onPress={(info.description) => learnMore(info.description)}
+      // onPress={() => console.log('help')}
+      onPress={toggleOverlay}
+    />
+
+    <Overlay ModalComponent={Modal} isVisible={visible} onBackdropPress={toggleOverlay}>
+      <Text>{info.description}</Text>
+    </Overlay>
+    </View>
+  );
+};
 
 const MsgToHalmunni = {
   title: "안녕하세요, 할머니! 서정입니다. 좋은 하루 보내세요!",
@@ -86,7 +111,7 @@ const Link = ({ link }) => (
   // to do: just use Button from React Native Elements
   <Button
     buttonStyle={{
-      backgroundColor: '#a5a58d', 
+      backgroundColor: '#a5a58d',
       // olive green
       margin: 10
     }}
