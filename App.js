@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { SafeAreaView, ScrollView, StyleSheet, Text, View, TouchableOpacity, Linking } from 'react-native';
-import { Card, Button, Icon, Overlay } from 'react-native-elements';
+import { Card, Button, Icon, Overlay, Image } from 'react-native-elements';
 import Modal from 'modal-react-native-web';
 import { linksies } from './linksies';
 
@@ -29,11 +29,13 @@ const IntroMsgButtonTextList = {
   thingies: [
     {
       "msg": "이게 뭐지?",
-      "description": "This is a website for all of your favorite things on the Internet! Made with love, from Judy"
+      "description": "할머니 위에 제가 이 웹사이트 만들었슴니다. 할머니가 가장 좋아하는 음악, 영상, 웹사이트, 모든가 다 여기 놨습니다. 새어운 패이브렛 것들이 여기 없으면, 저 서정이 한테 카톡 보내세요!",
+      "image": './img/grandma_and_me.HEIC'
     },
     {
       "msg": "어떻게 써?",
-      "description": "Click on the buttons to watch those videos :)"
+      "description": "초록세 버튼 누르세요! 혹시나 또 여기 돌아 오고 싶으면, 꼭대기에서 '힐머니 위에'를 누르세요",
+      "image": './img/flower.jpg'
     },
   ]
 };
@@ -64,13 +66,19 @@ const IntroMsgButton = ({ info }) => {
       titleStyle={{
         fontSize: 35
       }}
-      // onPress={(info.description) => learnMore(info.description)}
-      // onPress={() => console.log('help')}
       onPress={toggleOverlay}
     />
 
-    <Overlay ModalComponent={Modal} isVisible={visible} onBackdropPress={toggleOverlay}>
-      <Text>{info.description}</Text>
+    <Overlay 
+    ModalComponent={Modal} 
+    isVisible={visible} 
+    onBackdropPress={toggleOverlay}
+    overlayStyle={styles.overlayStyle}
+    >
+      <Text style={styles.modalText}>{info.description}</Text>
+      {/* <Image source={{ uri:require('./img/grandma_and_me.HEIC')}}/> */}
+
+
     </Overlay>
     </View>
   );
@@ -98,7 +106,9 @@ const LinksList = ({ links, title }) => (
     <View style={styles.linksList}>
       <Text style={styles.msgText2}>{title}</Text>
       {/* i want flex to start from JUST the links, not the title */}
-      {links.map(link => <Link key={link.url} link={link} />)}
+      <View style={styles.linksListFlex}>
+     {links.map(link => <Link key={link.url} link={link} />)}
+     </View>
     </View>
   </ScrollView>
 )
@@ -113,7 +123,8 @@ const Link = ({ link }) => (
     buttonStyle={{
       backgroundColor: '#a5a58d',
       // olive green
-      margin: 10
+      margin: 10,
+      borderRadius: 15
     }}
     onPress={() => Linking.openURL(link.url)}
     title={`${getLinkTitle(link)}`}
@@ -162,8 +173,18 @@ const styles = StyleSheet.create({
     fontSize: 35,
   },
   linksList: {
-    ...flexList,
+    // ...flexList,
     backgroundColor: '#eddcd2', //light peach
+    margin: 30,
+    textAlign: 'center',
+    paddingTop: 20,
+    width: 1200,
+    // to do: ask for feedback, change up the width, make this a flex-container for all categories
+    borderRadius: 30,
+  }, 
+
+  linksListFlex: {
+    ...flexList,
     borderRadius: 5,
     margin: 30,
     // width: 40
@@ -172,9 +193,10 @@ const styles = StyleSheet.create({
   },
   msgText2: {
     // backgroundColor: '#cb997e',
+    fontSize: 30
   },
   linkButton: {
-    borderRadius: 5,
+    borderRadius: 15,
     justifyContent: 'center',
     alignItems: 'center',
     textAlign: 'center',
@@ -210,6 +232,13 @@ const styles = StyleSheet.create({
   introPic: {
     height: 500,
     // width: 500,
+    textAlign: 'center'
+  },
+  modalText: {
+    fontSize: 30
+  },
+  overlayStyle: {
+    width: 600,
     textAlign: 'center'
   }
 
