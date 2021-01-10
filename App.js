@@ -10,13 +10,16 @@ const Banner = ({ title }) => (
 
 
 const IntroMsg = ({ title, msgs }) => (
-  <Card style={{
+  <Card 
+  style={{
     backgroundColor: "#b7b7a4",
-    margin: 300
-  }}>
+    padding: 0,
+    margin: 0
+  }}
+  containerStyle={{width: 900, margin: 'auto'}}>
     <Card.Title style={styles.msgtext}>{title}</Card.Title>
-    <Card.Divider />
-    <Card.Image style={styles.introPic} source={{ uri: require('./img/flowers.jpg') }} />
+    {/* <Card.Divider /> */}
+    <Card.Image style={styles.introPic} source={{ uri: require('./img/namsan.JPG') }} />
     <View style={styles.introMsgsList}>
       {msgs.map(msg => <IntroMsgButton info={msg} />)}
     </View>
@@ -33,8 +36,8 @@ const IntroMsgButtonTextList = {
       "image": './img/grandma_and_me.HEIC'
     },
     {
-      "msg": "어떻게 써?",
-      "description": "초록세 버튼 누르세요! 혹시나 또 여기 돌아 오고 싶으면, 꼭대기에서 '힐머니 위에'를 누르세요",
+      "msg": "어떻게 쓰지?",
+      "description": "초록세 버튼 누르세요! 혹시나 또 여기 돌아 오고 싶으면, 꼭대기에서 '할머니 위에'를 누르세요",
       "image": './img/flower.jpg'
     },
   ]
@@ -53,6 +56,7 @@ const IntroMsgButton = ({ info }) => {
 
   return (
     <View>
+    {/* intro msg button styling */}
     <Button
       icon={<Icon name='help' color='#ffffff' />}
       buttonStyle={{
@@ -61,6 +65,7 @@ const IntroMsgButton = ({ info }) => {
         backgroundColor: "#cb997e",
         padding: 5,
         margin: 8,
+        borderRadius: 15
       }}
       title={info.msg}
       titleStyle={{
@@ -85,7 +90,7 @@ const IntroMsgButton = ({ info }) => {
 };
 
 const MsgToHalmunni = {
-  title: "안녕하세요, 할머니! 서정입니다. 좋은 하루 보내세요!",
+  title: "할머니 위에서 만든 페이지",
 }
 
 
@@ -108,6 +113,7 @@ const LinksList = ({ links, title }) => (
       {/* i want flex to start from JUST the links, not the title */}
       <View style={styles.linksListFlex}>
      {links.map(link => <Link key={link.url} link={link} />)}
+     {/* TO DO: image={link.img} */}
      </View>
     </View>
   </ScrollView>
@@ -117,6 +123,7 @@ const getLinkTitle = link => (
   link.id
 );
 
+// one single link
 const Link = ({ link }) => (
   // to do: just use Button from React Native Elements
   <Button
@@ -129,7 +136,7 @@ const Link = ({ link }) => (
     onPress={() => Linking.openURL(link.url)}
     title={`${getLinkTitle(link)}`}
     titleStyle={{
-      fontSize: 25
+      fontSize: 25,
     }}
   />
 );
@@ -147,7 +154,7 @@ const App = () => {
 }
 
 const flexList = {
-  flex: 1,
+  flex: 3,
   flexDirection: 'row',
   flexWrap: 'wrap',
   alignItems: 'center',
@@ -178,7 +185,7 @@ const styles = StyleSheet.create({
     margin: 30,
     textAlign: 'center',
     paddingTop: 20,
-    width: 1200,
+    // width: 1200,
     // to do: ask for feedback, change up the width, make this a flex-container for all categories
     borderRadius: 30,
   }, 
@@ -191,9 +198,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     // flex: 3
   },
-  msgText2: {
-    // backgroundColor: '#cb997e',
-    fontSize: 30
+  msgText2: { 
+    //styling for "videos"
+    backgroundColor: '#cb997e',
+    fontSize: 30,
+    padding: 10,
+    borderRadius: 15,
   },
   linkButton: {
     borderRadius: 15,
@@ -231,8 +241,8 @@ const styles = StyleSheet.create({
   },
   introPic: {
     height: 500,
-    // width: 500,
-    textAlign: 'center'
+    width: 500,
+    margin: 'auto'
   },
   modalText: {
     fontSize: 30
